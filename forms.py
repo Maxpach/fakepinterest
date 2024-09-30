@@ -11,6 +11,7 @@ class FormLogin(FlaskForm):
     senha = PasswordField("Senha", validators=[DataRequired()])
     botao_confirmacao = SubmitField("Fazer login")
 
+
 class FormCriarConta(FlaskForm):
     email = StringField("E-mail", validators=[DataRequired()])
     username = StringField("Nome de usuário ", validators=[DataRequired()])
@@ -22,6 +23,7 @@ class FormCriarConta(FlaskForm):
         usuario = Usuario.query.filter_by(email=email.data).first()
         if usuario:
             return ValidationError("E-mail já cadastrado")
+
 
 class FormFoto(FlaskForm):
     foto = FileField("Foto", validators=[DataRequired()])
